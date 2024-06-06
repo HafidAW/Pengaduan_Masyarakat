@@ -1,4 +1,4 @@
-name: PHP CI
+name: Laravel CI
 
 on:
   push:
@@ -23,5 +23,17 @@ jobs:
         php-version: '8.1' # Sesuaikan dengan versi PHP yang Anda gunakan
         extensions: mbstring, intl, json
 
-    - name: Run PHP Unit Tests
-      run: vendor/bin/phpunit --configuration phpunit.xml
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
+
+    - name: Copy .env.example to .env
+      run: cp .env.example .env
+
+    - name: Generate application key
+      run: php artisan key:generate
+
+    - name: Run migrations
+      run: php artisan migrate --env=testing
+
+    - name: Run tests
+      run: php artisan test
