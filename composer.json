@@ -1,6 +1,6 @@
 {
-    "name": "vendor/Project-Pengaduan",
-    "description": "aplikasi pengaduan",
+    "name": "vendor/project-name",
+    "description": "A short description of your project",
     "type": "project",
     "require": {
         "php": "^7.3|^8.0",
