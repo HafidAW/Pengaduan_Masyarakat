@@ -18,8 +18,14 @@ jobs:
       with:
         php-version: '7.4'
 
+    - name: Install Composer
+      run: sudo apt-get install composer
+    
+    - name: Update Composer
+      run: composer self-update
+
     - name: Install dependencies
-      run: composer install
+      run: composer install --verbose
 
     - name: Run tests
       run: composer test
